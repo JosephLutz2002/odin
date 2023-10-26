@@ -23,7 +23,6 @@ const MainComponent = () => {
     // Find the module you want to update by its unique identifier (moduleId)
     const updatedModules = modules.map((module) => {
       if (module.id === moduleId) {
-        // Update the mark for the specific module
         return { ...module, mark: newMark };
       }
       return module;
@@ -72,6 +71,7 @@ const MainComponent = () => {
     const updatedModules = [...modules];
     updatedModules.splice(index, 1);
     setModules(updatedModules);
+    setShowUseClient(false)
 
     // Log the ID of the deleted module
     console.log(`Deleted module with ID: ${deletedModuleId}`);
@@ -84,7 +84,7 @@ const MainComponent = () => {
 
   return (
     <div>
-      <button onClick={openForm}>Open Form</button>
+      <button onClick={openForm}>Create New Module</button>
       {showForm && (
         <AddModuleForm
           newModule={newModule}

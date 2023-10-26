@@ -6,7 +6,7 @@ const CustomTable = ({ module ,updateModuleMark}) => {
   const [newRow, setNewRow] = useState({
     assessmentName: '',
     assessmentDate: '',
-    mark: '',
+    mark: 0,
     weight: '',
     assessmentType: '',
     id:''
@@ -51,7 +51,7 @@ useEffect(() => {
           assessmentDate:tests.tests[i][2],
           mark:tests.tests[i][3],
           weight:tests.tests[i][4],
-          assessmentType:'Assignment',
+          assessmentType:'Test',
           assessmentDescp:'Not Needed'
 
         }
@@ -83,20 +83,26 @@ useEffect(() => {
         assessmentType: optionSelected[0].value,
         id:row_id
     }
-    setData([...data, newRow]);
+    fetchData()
     setAssesmentDate('')
     setAssesmentName('')
-    setMark('')
+    setMark(0)
     setCompleted('')
     setWeight('')
     setOptionSelected('')
     setAssesmentDesc('')
   };
 
-  const deleteRow = (index) => {
-    const updatedData = [...data];
-    updatedData.splice(index, 1);
-    setData(updatedData);
+  const deleteRow = async (index) => {
+    if (data[index].assessmentType === 'Assignment'){
+      const response = await api.deleteAssignment(data[index].id,module.id)
+      updateModuleMark(module.id,response.mark);
+
+    }else {
+      const response = await api.deleteTest(data[index].id,module.id)
+      updateModuleMark(module.id,response.mark);
+    }
+    fetchData();
   };
 
   const handleSaveMark = async (index) =>{
@@ -114,10 +120,16 @@ useEffect(() => {
     setEditedMark(data[index].mark);
   };
 
-  const handleSaveClick = (index) => {
-    const newData = [...data];
-    newData[index].mark = editedMark;
-    setData(newData);
+  const handleSaveClick = async (index) => {
+    if (data[index].assessmentType === 'Assignment'){
+      const response =  await api.updateAssignment(data[index].assessmentName,data[index].id,module.id,editedMark)
+      updateModuleMark(module.id,response.mark)
+
+    }else {
+      const response =  await api.updateTest(data[index].assessmentName,data[index].id,module.id,editedMark)
+      updateModuleMark(module.id,response.mark)
+    }
+    fetchData()
     setEditIndex(null);
   };
 
@@ -147,7 +159,7 @@ useEffect(() => {
           assessmentDate:tests.tests[i][2],
           mark:tests.tests[i][3],
           weight:tests.tests[i][4],
-          assessmentType:'Assignment',
+          assessmentType:'Test',
           assessmentDescp:'Not Needed'
 
         }
@@ -160,7 +172,7 @@ useEffect(() => {
 
   return (
     <div className="custom-table">
-      <h3>Custom Table</h3>
+      <h3>Assignments and Tests for {module.name}</h3>
       <table>
         <thead>
           <tr>
@@ -176,7 +188,7 @@ useEffect(() => {
         <tbody>
           {data.map((row, index) => (
             <tr key={index}>
-              <td>{row.assessmentName}</td>
+              <td>{row.assessmentName }</td>
               <td>{row.assessmentDate}</td>
               <td>
                 {editIndex === index ? (
@@ -187,21 +199,19 @@ useEffect(() => {
                       onChange={(e) => setEditedMark(e.target.value)}
                     />
                     <button onClick={() => handleSaveClick(index)}>Save</button>
+                    %
                   </div>
                 ) : (
                   <div onClick={() => handleEditClick(index)} style={{ cursor: 'pointer' }}>
-                    {row.mark}
+                    {row.mark}%
                   </div>
                 )}
               </td>
-              <td>{row.weight}</td>
+              <td>{row.weight}%</td>
               <td>{row.assessmentType}</td>
               <td>{row.assessmentDescp}</td>
               <td>
                 <button onClick={() => deleteRow(index)}>Delete</button>
-              </td>
-              <td>
-                <button onClick={() => handleSaveMark(index)}>Add Mark</button>
               </td>
             </tr>
           ))}

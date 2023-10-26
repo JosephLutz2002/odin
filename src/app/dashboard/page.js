@@ -19,6 +19,18 @@ const MainComponent = () => {
   const [showUseClient, setShowUseClient] = useState(false);
   const [selectedModule, setSelectedModule] = useState(null);
 
+  const updateModuleMark = (moduleId, newMark) => {
+    // Find the module you want to update by its unique identifier (moduleId)
+    const updatedModules = modules.map((module) => {
+      if (module.id === moduleId) {
+        // Update the mark for the specific module
+        return { ...module, mark: newMark };
+      }
+      return module;
+    });
+
+    setModules(updatedModules);
+  };
   useEffect(() => {
     const fetchModules = async () => {
       try {
@@ -112,6 +124,7 @@ const MainComponent = () => {
       {showUseClient && (
         <CustomMenu
           module={selectedModule}
+          updateModuleMark={updateModuleMark}
           onClose={() => setShowUseClient(false)}
         />
       )}

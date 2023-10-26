@@ -111,8 +111,116 @@ function login(username,password) {
     });
   }
 
+  function addAssignment(name,desc,date,moduleid,weighting){
+    return new Promise((resolve, reject) => {
+      const apiUrl = url+ '/api/modules/addAssignment';
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        data: {
+          name:name,
+          desc:desc,
+          date:date,
+          id:cookies.getJWTToken('uid'),
+          module:moduleid,
+          weighting:weighting
+        }
+      };
+  
+      axios(apiUrl, requestOptions)
+      .then((response) => {  
+          resolve(response.data);
+        })
+        .catch((error) => {
+          resolve(false);
+        });
+    });
+  }
+
+  function getAssignments(moduleid){
+    return new Promise((resolve, reject) => {
+      const apiUrl = url+ `/api/modules/getAssignments?user_id=${cookies.getJWTToken('uid')}&module_id=${moduleid}`;
+      console.log(apiUrl)
+      const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json'},
+      };
+  
+      axios(apiUrl)
+      .then((response) => {
+          resolve(response.data);
+        })
+        .catch((error) => {
+          resolve(false);
+        });
+    });
+  }
+
+  function getTests(moduleid){
+    return new Promise((resolve, reject) => {
+      const apiUrl = url+ `/api/modules/getTests?user_id=${cookies.getJWTToken('uid')}&module_id=${moduleid}`;
+      console.log(apiUrl)
+      const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json'},
+      };
+  
+      axios(apiUrl)
+      .then((response) => {
+          resolve(response.data);
+        })
+        .catch((error) => {
+          resolve(false);
+        });
+    });
+  }
+
+
+  function addTest(name,date,moduleid,weighting){
+    return new Promise((resolve, reject) => {
+      const apiUrl = url+ '/api/modules/addTest';
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        data: {
+          name:name,
+          date:date,
+          userid:cookies.getJWTToken('uid'),
+          moduleid:moduleid,
+          weighting:weighting
+        }
+      };
+  
+      axios(apiUrl, requestOptions)
+      .then((response) => {  
+          resolve(response.data);
+        })
+        .catch((error) => {
+          resolve(false);
+        });
+    });
+  }
+
+  function getMark(moduleid){
+    return new Promise((resolve, reject) => {
+      const apiUrl = url+ `/api/modules/average?user_id=${cookies.getJWTToken('uid')}&module_id=${moduleid}`;
+      console.log(apiUrl)
+      const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json'},
+      };
+  
+      axios(apiUrl)
+      .then((response) => {
+          resolve(response.data);
+        })
+        .catch((error) => {
+          resolve(false);
+        });
+    });
+  }
 
 module.exports = {
-    login,createAccount,createModule,getAllModules,deleteModule
+    login,createAccount,createModule,getAllModules,deleteModule,addAssignment,getAssignments,getTests,addTest,getMark
 };
   

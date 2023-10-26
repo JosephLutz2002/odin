@@ -1,7 +1,6 @@
 import React from 'react';
 import CustomTable from './moduleTable';
-const CustomMenu = ({ module, onClose }) => {
-    console.log('selected module is',module)
+const CustomMenu = ({ module, onClose , updateModuleMark}) => {
     
 
   return (
@@ -24,7 +23,7 @@ const CustomMenu = ({ module, onClose }) => {
         </div>
         
       )}
-      <CustomTable></CustomTable>
+      <CustomTable module={module} updateModuleMark={updateModuleMark}></CustomTable>
       <button onClick={onClose}>Close</button>
     </div>
   );

@@ -220,7 +220,116 @@ function login(username,password) {
     });
   }
 
+  function updateAssignment(name,assignid,moduleid,mark){
+    return new Promise((resolve, reject) => {
+      const apiUrl = url+ '/api/modules/updateAssignment';
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        data: {
+          name:name,
+          assignid:assignid,
+          userid:cookies.getJWTToken('uid'),
+          moduleid:moduleid,
+          mark:mark
+        }
+      };
+  
+      axios(apiUrl, requestOptions)
+      .then((response) => {  
+          resolve(response.data);
+        })
+        .catch((error) => {
+          resolve(false);
+        });
+    });
+  }
+
+  function updateTest(name,testid,module,mark){
+    return new Promise((resolve, reject) => {
+      const apiUrl = url+ '/api/modules/updateTest';
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        data: {
+          name:name,
+          testid:testid,
+          user:cookies.getJWTToken('uid'),
+          module:module,
+          mark:mark
+        }
+      };
+  
+      axios(apiUrl, requestOptions)
+      .then((response) => {  
+          resolve(response.data);
+        })
+        .catch((error) => {
+          resolve(false);
+        });
+    });
+  }
+
+  function deleteAssignment(assignid,moduleid){
+    return new Promise((resolve, reject) => {
+      const apiUrl = url+ '/api/modules/deleteAssignment';
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        data: {
+          assignid:assignid,
+          moduleid:moduleid,
+          userid:cookies.getJWTToken('uid')
+        }
+      };
+  
+      axios(apiUrl, requestOptions)
+      .then((response) => {  
+          resolve(response.data);
+        })
+        .catch((error) => {
+          resolve(false);
+        });
+    });
+  }
+
+  function deleteTest(testid,moduleid){
+    return new Promise((resolve, reject) => {
+      const apiUrl = url+ '/api/modules/deleteTest';
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        data: {
+          testid:testid,
+          moduleid:moduleid,
+          userid:cookies.getJWTToken('uid')
+        }
+      };
+  
+      axios(apiUrl, requestOptions)
+      .then((response) => {  
+          resolve(response.data);
+        })
+        .catch((error) => {
+          resolve(false);
+        });
+    });
+  }
+
 module.exports = {
-    login,createAccount,createModule,getAllModules,deleteModule,addAssignment,getAssignments,getTests,addTest,getMark
+    login,
+    createAccount,
+    createModule,
+    getAllModules,
+    deleteModule,
+    addAssignment,
+    getAssignments,
+    getTests,
+    addTest,
+    getMark,
+    updateAssignment,
+    updateTest,
+    deleteAssignment,
+    deleteTest
 };
   

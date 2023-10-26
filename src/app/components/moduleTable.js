@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import CustomDropdown from './DropDownMenu';
 const CustomTable = ({ module }) => {
   const [data, setData] = useState([]);
   const [newRow, setNewRow] = useState({
@@ -10,17 +10,34 @@ const CustomTable = ({ module }) => {
     weight: '',
     assessmentType: '',
   });
+  const [assessmentName, setAssesmentName] = useState('')
+  const [assessmentDate, setAssesmentDate] = useState('')
+  const [mark, setMark] = useState('')
+  const [completed, setCompleted] = useState('')
+  const [weight,setWeight] = useState('')
+  const [assessmentType,setAssesmentType] = useState('')
+  const options = [
+    {value:'1',label:'Assignment'},
+    {value:'2',label:'Test'}
+]
+const [optionSelected, setOptionSelected] = useState(null);
 
   const addRow = () => {
+    console.log('Creating new table row ',assessmentName,assessmentDate,mark,completed,weight,'\t',optionSelected[0].value)
+    const newRow = {
+        assessmentName: assessmentName,
+        assessmentDate: assessmentDate,
+        mark: mark,
+        weight: weight,
+        assessmentType: optionSelected[0].value, 
+    }
     setData([...data, newRow]);
-    setNewRow({
-      assessmentName: '',
-      assessmentDate: '',
-      mark: '',
-      completed: false,
-      weight: '',
-      assessmentType: '',
-    });
+    setAssesmentDate('')
+    setAssesmentName('')
+    setMark('')
+    setCompleted('')
+    setWeight('')
+    setOptionSelected('')
   };
 
   const deleteRow = (index) => {
@@ -40,7 +57,6 @@ const CustomTable = ({ module }) => {
             <th>Mark</th>
             <th>Weight</th>
             <th>Assessment Type</th>
-            <th>Completed</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -69,50 +85,33 @@ const CustomTable = ({ module }) => {
       <div>
         <input
           type="text"
+          value={assessmentName}
           placeholder="Assessment Name"
-          value={newRow.assessmentName}
           onChange={(e) =>
-            setNewRow({ ...newRow, assessmentName: e.target.value })
+            setAssesmentName(e.target.value)
           }
         />
         <input
           type="text"
+          value={assessmentDate}
           placeholder="Assessment Date"
-          value={newRow.assessmentDate}
           onChange={(e) =>
-            setNewRow({ ...newRow, assessmentDate: e.target.value })
+            setAssesmentDate(e.target.value)
           }
         />
         <input
           type="text"
+          value={mark}
           placeholder="Mark"
-          value={newRow.mark}
-          onChange={(e) => setNewRow({ ...newRow, mark: e.target.value })}
+          onChange={(e) => setMark(e.target.value)}
         />
         <input
           type="text"
+          value={weight}
           placeholder="Weight"
-          value={newRow.weight}
-          onChange={(e) => setNewRow({ ...newRow, weight: e.target.value })}
+          onChange={(e) => setWeight(e.target.value)}
         />
-        <input
-          type="text"
-          placeholder="Assessment Type"
-          value={newRow.assessmentType}
-          onChange={(e) =>
-            setNewRow({ ...newRow, assessmentType: e.target.value })
-          }
-        />
-        <label>
-          Completed
-          <input
-            type="checkbox"
-            checked={newRow.completed}
-            onChange={(e) =>
-              setNewRow({ ...newRow, completed: e.target.checked })
-            }
-          />
-        </label>
+        <CustomDropdown options={options} optionSelected={optionSelected} setOptionSelected={setOptionSelected} placeholder='Assesment type' value={newRow.assessmentType}></CustomDropdown>
         <button onClick={addRow}>Add Row</button>
       </div>
     </div>

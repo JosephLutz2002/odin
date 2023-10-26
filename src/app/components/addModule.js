@@ -12,7 +12,8 @@ const AddModuleForm = ({ onClose, onAddModule }) => {
       name: moduleName,
       id: t['id'],
       year,
-      code:code
+      code:code,
+      mark:0
     };
     onAddModule(newModule);
 

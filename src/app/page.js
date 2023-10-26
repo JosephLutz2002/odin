@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Navbar from './components/navbar'
+import "./images/joe-img.jpeg"
 import './globals.css'
 /**
  * 
@@ -8,64 +9,93 @@ import './globals.css'
 export default function Home() {
   return (
     <div>
-      <h1>Joseph Lutz & Bella Scholtz</h1>
-      <p>This section will have a base into of us</p>
-      <div>
-        <h1>About Us</h1>
-        {/* Have floating image next to each name */}
-        <h2>Joseph</h2> {/*Image float left  for Joe*/}
-        <p>
-          Graduating from Stellenbosch University, in 2023, with a BSc Bachelor's degree that double majored in Computer Science and Applied Mathematics.
-          I have a deep passion for programming and mathematics with a goal of moving my career to focus on the area of Machine Learning and Artificial Intelligence. <br></br>
-          I am driven and focused to put my abilities towards the betterment of my field.
-        </p>
-        <p>If you would like to view a full list of my skills and expertise you can download a copy of my Resume/CV</p>
-        <button>Download CV</button>{/*Create button to download PDF of CV */}
-        <h3>Technical Expertise</h3>
-        <p>Highlight your programming languages, tools, and technologies you specialize in.</p>
-        <h3>Certifications</h3>
-        <p>List of certificates / courses completed</p>
-        <h2>Bella</h2> {/*Image float right  for Bella*/}
-        <p>
-          Originally a Computer Science student at Stellenbosch University before I changed my degree to Socio-Informatics (Information Systems Management/Information Science). <br></br>
-          I have a love for designing and programming.
-        </p>
-        <p>If you would like to view a full list of my skills and expertise you can download a copy of my Resume/CV</p>
-        <button>Download CV</button>{/*Create button to download PDF of CV */}
-        <h3>Technical Expertise</h3>
-        <p>Highlight your programming languages, tools, and technologies you specialize in.</p>
-        <h3>Certifications</h3>
-        <p>List of certificates / courses completed</p>
-      </div>
-      <h1>Portfolio Showcase</h1>
-      {/*2 columns with one side for Joseph and the other for Bella */}
-      <div className='two-column'>
-        <div id='Joseph-Showcase'>
-          <h2>Top Projects</h2>
+      <h1>Welcome to <span className='accent-word'>Odin</span></h1>
+      <p>
+        In the dynamic and demanding world of education, staying organized and on top of your academic progress is often a challenging task.
+        To address this, we are excited to introduce our innovative web platform designed exclusively for students.
+        Our Student Dashboard Web Platform, Odin, is a powerful tool that empowers students to take control of their academic journey like never before.
+      </p>
+      <p>
+        Gone are the days of managing multiple notebooks, spreadsheets, or sticky notes to keep track of your module information, marks, test dates, and project deadlines.
+        Our platform offers a comprehensive solution that simplifies and streamlines your academic life.
+      </p>
+      <h2>Why Choose Odin?</h2>
+      <section className='three-column'>
+        <div>
+          <h4>Personalised Dashboards</h4>
           <p>
-            List top 3 projects with short description <br></br>
-            Eg. Compiler, Concurency game engine & one other (each in h3).
+            Create dedicated dashboards for each of your modules, allowing you to centralize all relevant information in one place.
+            You can easily switch between modules to access specific details.
           </p>
-          <button>Joseph's Projects</button>{/*Button with link to Joseph's Projects page */}
-          <p>To look at more of my projects in detail you can visit my projects page or view my git profile</p>
-          <button>Joseph's Projects</button>{/*Button with link to Joseph's Projects page */} <button>Joseph's GitHub</button>{/*Button with link to Joseph's Github profile */}
         </div>
-        <div id='Bella-Showcase'>
-          <h2>Top Projects</h2>
-          <p>List top 3 projects with short description</p>
-          <button>Bella's Projects</button>{/*Button with link to Bella's Projects page */}
-          <p>To look at more of my projects in detail you can visit my projects page or view my git profile</p>
-          <button>Bella's Projects</button>{/*Button with link to Bella's Projects page */} <button>Bella's GitHub</button>{/*Button with link to Bella's Github profile */}
+        <div>
+          <h4>Mark Management</h4>
+          <p>
+            Input your marks for assignments, quizzes, tests, and projects directly into the platform.
+            The system will automatically calculate your current grade and display it prominently, giving you a real-time overview of your academic performance.
+          </p>
         </div>
+        <div>
+          <h4>Assessment Dates</h4>
+          <p>
+            Stay ahead of your assessments by adding important dates for tests, exams, and project submissions to your module dashboards.
+          </p>
+        </div>
+        <div>
+          <h4>Pass/Fail Tracker</h4>
+          <p>
+            Worried about whether you're on track to pass your courses? Our platform takes the guesswork out of the equation.
+            It calculates whether you're meeting the required criteria for passing and notifies you of your running course mark.
+          </p>
+        </div>
+        <div>
+          <h4>Data Security & Privacy</h4>
+          <p>
+            We understand the sensitivity of academic data. Rest assured, your information is securely stored and only accessible to you.
+            Your privacy and data security are our top priorities.
+          </p>
+        </div>
+        <div>
+          <h4>Platform-Agnostic Accessibility</h4>
+          <p>
+            Odin is accessible from anywhere, on any device with a web browser, without the need for downloads or installations.
+            This means you can seamlessly transition between your devices, ensuring your academic life is always within reach.
+          </p>
+        </div>
+      </section>
+      <div>
+        <h2>About Us</h2>
+        <img src={'joe-img.jpeg'} alt='Image of Joseph Lutz' className='float-left' />
+        <p>
+          Our paths crossed during the final stages of our first year at university, and we quickly discovered our shared passion for developing new projects and enhancing our coding skills.
+        </p>
+        <p>
+          Joseph holds a degree in computer science and applied mathematics, while Bella's expertise lies in socio-informatics, also known as Information Systems Management.
+          This combination of skills allows us to create innovative solutions and projects that we hope can benefit others.
+        </p>
+        <img src='src/app/images/joe-img.jpeg' alt='Image of Joseph Lutz' className='float-right' />
+        <h3>Why did we create Odin?</h3> {/*Image float right*/}
+        <p>
+          With a humble beginning using a spreadsheet to track our academic marks, our shared aspiration was to develop a more versatile and visually appealing tool to monitor our academic progress effectively.
+        </p>
+        <p>
+          Together, we have created this platform with the hope that it will benefit fellow students. We aim to provide an easy-to-use and customizable tool that empowers students to track their academic progress through a user-friendly dashboard for each module.
+          Our mission is to make academic management more accessible and efficient for students everywhere.
+        </p>
       </div>
-      <h1>GitHub Activity</h1>
-      {/*Embed GitHub activity feed to show our recent code commits and contributions */}
+      <h2>An Inside Look</h2>
       <div className='two-column'>
-        <div id='Joe-github-activity'>
-          <h2>Joseph's recent activity</h2>
+        <div id='module-eg'>
+          <h3>The Overiew</h3>
+          <p>
+
+          </p>
         </div>
-        <div id='Bella-github-activity'>
-          <h2>Bella's recent activity</h2>
+        <div id='dashboard-eg'>
+          <h3>The Dashboard</h3>
+          <p>
+
+          </p>
         </div>
       </div>
     </div>

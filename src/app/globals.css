@@ -23,7 +23,49 @@
   }
 }
 
+/*Typography Styling*/
+h1 {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 80px;
+  font-weight: bold;
+  padding-top: 50px;
+  padding-left: 20px;
+  color: #0a1128;
+}
 
+h2 {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 55px;
+  padding-top: 15px;
+  padding-left: 20px;
+  color: #001f54;
+}
+
+h3 {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 35px;
+  padding-left: 15px;
+  color: #034078;
+}
+
+h4 {
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 25px;
+  padding: 5px;
+}
+
+p {
+  font-size: 20px;
+  text-align: justify;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 15px;
+}
+
+.accent-word {
+  color: #1282A2;
+}
 
 .image {
   width: 100px;
@@ -32,11 +74,13 @@
 }
 
 .float-right {
-  float: right
+  float: right;
 }
 
 .float-left {
   float: left;
+  max-width: 727px;
+  max-height: 727px;
 }
 
 .pageStyle {
@@ -78,6 +122,25 @@ button:hover {
   padding: auto;
 }
 
+.three-column {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  padding: 15px;
+}
+
+.three-column>div {
+  text-align: justify;
+  padding: auto;
+  border-radius: 20px;
+  background-color: #001F54;
+  color: white;
+}
+
+.three-column h4 {
+  color: #83D9F1;
+}
 
 /*External button styling used here*/
 .glow-on-hover {

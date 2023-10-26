@@ -7,7 +7,7 @@
 @tailwind components;
 @tailwind utilities;
 
- :root {
+:root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -25,13 +25,19 @@
 
 
 
-.image{
+.image {
   width: 100px;
   height: 50px;
   background-image: url('./images/Martz90-Hex-Messenger.512.png')
-  
 }
 
+.float-right {
+  float: right
+}
+
+.float-left {
+  float: left;
+}
 
 .pageStyle {
   @apply -translate-x-2/4 -translate-y-2/4 bg-[lightcyan] w-[30%] absolute p-5 rounded-[10px] border-2 border-solid border-[black] left-2/4 top-2/4;
@@ -42,40 +48,69 @@
 .button {
   @apply mt-2.5;
 }
-/*
+
+button {
+  background-color: #001F54;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+button:hover {
+  background-color: #fff;
+  color: #001F54;
+  border: #001F54;
+  border-style: solid;
+  border-width: 1px;
+}
+
+/*Column Styling */
+.two-column {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  padding: 15px;
+}
+
+.two-column>div {
+  text-align: justify;
+  padding: auto;
+}
 
 
 /*External button styling used here*/
- .glow-on-hover {
+.glow-on-hover {
   @apply w-full h-[50px] text-white cursor-pointer relative z-0 overflow-hidden rounded-[10px] border-[black];
   outline: greenyellow;
   background: #1282a2;
   padding-block: 10;
 }
+
 .glow-on-hover::before,
 .glow-on-hover::after {
   @apply content-[''] absolute w-full h-full opacity-0 transition-opacity duration-[0.3s] ease-[ease-in-out] rounded-[10px] left-0 top-0;
-  background: linear-gradient(
-    45deg,
-    #ff0000,
-    #ff7300,
-    #fffb00,
-    #48ff00,
-    #00ffd5,
-    #002bff,
-    #7a00ff,
-    #ff00c8,
-    #ff0000
-  );
+  background: linear-gradient(45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000);
 }
 
 
 .glow-on-hover::before {
   @apply bg-[400%] animate-[glowing_20s_linear_infinite] blur-[5px];
 }
+
 .glow-on-hover:hover::before {
   @apply opacity-100;
 }
+
 .glow-on-hover:active {
   @apply text-black;
 }
@@ -88,13 +123,15 @@
   0% {
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff0000, 0 0 50px #ff0000, 0 0 60px #ff0000, 0 0 70px #ff0000;
   }
+
   50% {
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
   }
+
   100% {
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #0000ff, 0 0 50px #0000ff, 0 0 60px #0000ff, 0 0 70px #0000ff;
   }
-} 
+}
 
 
 /* Define CSS styles for the new tab content */
@@ -103,6 +140,7 @@
 .label {
   @apply text-[#008080] text-center block py-2.5;
 }
+
 /* .rounded {
   @apply bg-white shadow-[0_0_10px_rgba(0,0,0,0.1)] p-5 rounded-[10px];
 } */
@@ -110,15 +148,13 @@
   @apply w-full h-[50px] border text-[black] p-2.5 rounded-[15px] border-solid border-[#ccc];
   background: transparent;
 }
+
 #password {
   @apply w-full h-[50px] border text-[black] p-2.5 rounded-[15px] border-solid border-[#ccc];
   background: transparent;
 }
+
 #email {
   @apply w-full h-[50px] border text-[black] p-2.5 rounded-[15px] border-solid border-[#ccc];
   background: transparent;
 }
-
-
-
-

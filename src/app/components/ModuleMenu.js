@@ -2,6 +2,8 @@ import React from 'react';
 import CustomTable from './moduleTable';
 const CustomMenu = ({ module, onClose }) => {
     console.log('selected module is',module)
+    
+
   return (
     <div className="custom-menu">
       <h3>Selected Module Details</h3>

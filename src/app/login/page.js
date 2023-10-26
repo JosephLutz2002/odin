@@ -9,8 +9,13 @@ function Login() {
   const [password, setPassword] = useState('');
   const router = useRouter();
   const handleLogin = async () => {
-   console.log('handling account login')
+   console.log('handling account login');
   };
+
+
+  const handleCreateAccount = async() => {
+    console.log('handling create account');
+  }
   
 
   return (
@@ -27,6 +32,7 @@ function Login() {
         </div>
 
       <div><button  className="button glow-on-hover" onClick={handleLogin}>Login</button></div>
+      <div><button  className="button glow-on-hover" onClick={handleCreateAccount}>Create Account</button></div>
     </div>
     </div>
     </div>

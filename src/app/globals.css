@@ -28,7 +28,7 @@
 .image{
   width: 100px;
   height: 50px;
-  background-image: url(./images/Martz90-Hex-Messenger.512.png)
+  background-image: url('./images/Martz90-Hex-Messenger.512.png')
   
 }
 

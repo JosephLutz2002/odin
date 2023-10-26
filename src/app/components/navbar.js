@@ -4,7 +4,6 @@ const Navbar = () => {
   return (
     <nav className="bg-blue-500 p-4">
       <div className="max-w-4xl mx-auto flex justify-between items-center">
-        {/* Logo or Branding (You can replace with your own logo) */}
         <img
         className="image"
       />

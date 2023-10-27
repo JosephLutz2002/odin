@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Navbar from './components/navbar'
-import "./images/joe-img.jpeg"
 import './globals.css'
 /**
  * 
@@ -65,7 +64,8 @@ export default function Home() {
       </section>
       <div>
         <h2>About Us</h2>
-        <img src={'joe-img.jpeg'} alt='Image of Joseph Lutz' className='float-left' />
+        <div className='w-64 h-64 m-5 bg-contain rounded-lg shadow-lg float-left joe-image'></div>
+        <h3>Who are we?</h3>
         <p>
           Our paths crossed during the final stages of our first year at university, and we quickly discovered our shared passion for developing new projects and enhancing our coding skills.
         </p>
@@ -73,7 +73,9 @@ export default function Home() {
           Joseph holds a degree in computer science and applied mathematics, while Bella's expertise lies in socio-informatics, also known as Information Systems Management.
           This combination of skills allows us to create innovative solutions and projects that we hope can benefit others.
         </p>
-        <img src='src/app/images/joe-img.jpeg' alt='Image of Joseph Lutz' className='float-right' />
+      </div>
+      <div>
+        <div className='w-64 h-64 m-5 bg-contain rounded-lg shadow-lg float-right bella-image'></div>
         <h3>Why did we create Odin?</h3> {/*Image float right*/}
         <p>
           With a humble beginning using a spreadsheet to track our academic marks, our shared aspiration was to develop a more versatile and visually appealing tool to monitor our academic progress effectively.
@@ -98,6 +100,37 @@ export default function Home() {
           </p>
         </div>
       </div>
+      <footer>
+        <div>
+          <h3>Contact Us</h3>
+          <ul class="max-w-md m-5 space-y-1 text-white-500 list-inside space-y-4">
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+              </svg>
+              jkolutz@gmail.com
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+              </svg>
+              bellascholtz19@gmail.com
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+              </svg>
+              +27 (71) 888 5833
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+        </div>
+        <div>
+          <div className='w-64 h-64 m-5 bg-contain float-right logo-sqr'></div>
+        </div>
+      </footer>
     </div>
   )
 }

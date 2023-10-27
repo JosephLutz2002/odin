@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 const cookies = require('../utils/cookies');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
   const router = useRouter();
@@ -56,7 +58,7 @@ const Navbar = () => {
         <div className="flex space-x-4"> {/* Wrap the last two buttons in a flex container */}
           {isUserLoggedIn ? (
             <>
-              <button className="bg-white text-blue-500 hover:bg-blue-100 text-sm px-4 py-2 rounded-full transition duration-300 ease-in-out">Profile</button>
+              <button className="bg-white text-blue-500 hover:bg-blue-100 text-sm px-4 py-2 rounded-full transition duration-300 ease-in-out"><FontAwesomeIcon icon={faUser} /></button>
               <button className="bg-white text-blue-500 hover:bg-blue-100 text-sm px-4 py-2 rounded-full transition duration-300 ease-in-out" onClick={handleLogOut}>Logout</button>
             </>
           ) : null}

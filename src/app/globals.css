@@ -248,3 +248,50 @@ button:hover {
   @apply w-full h-[50px] border text-[black] p-2.5 rounded-[15px] border-solid border-[#ccc];
   background: transparent;
 }
+
+.modules-list {
+  display: flex;
+  flex-wrap: wrap; /* Wrap to the next line when there's not enough space */
+  list-style: none;
+  padding: 0;
+}
+
+.module-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  width: 200px; /* Adjust the width as needed */
+  display: flex;
+  flex-direction: column;
+}
+
+.module-item div {
+  margin-bottom: 5px;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+
+th, td {
+  text-align: center;
+  padding: 10px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2; /* Optional: Add alternating row colors */
+}
+
+textarea {
+  width: 100px; /* Set the width to a fixed size */
+  height: 100px; /* Set the height to a fixed size */
+  resize: none; /* Prevent resizing by the user */
+}
+
+
+
+

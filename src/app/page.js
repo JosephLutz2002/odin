@@ -101,12 +101,14 @@ export default function Home() {
           <p>
             Quickly add and categorize your academic modules. You can set custom names, add course descriptions or course codes, and even colour code your modules, making it easy to identify each one at a glance.
           </p>
+          {/*Insert screenshot of finished overview screen */}
         </div>
         <div id='dashboard-eg'>
           <h3>The Dashboard</h3>
           <p>
             Add, update, and track your marks for various assignments, quizzes, tests, and projects. Watch your progress evolve through visual graphs and charts that offer a dynamic representation of your performance in each module.
           </p>
+          {/*Insert screenshot of finished dashboard screen */}
         </div>
       </div>
       <footer>

@@ -154,7 +154,7 @@ export default function Home() {
           </ul>
         </div>
         <div>
-          <div className='w-64 h-64 m-5 bg-contain float-right logo-sqr'></div>
+          <div className='w-64 h-64 m-5 bg-contain logo-sqr'></div>
         </div>
       </footer>
     </div>

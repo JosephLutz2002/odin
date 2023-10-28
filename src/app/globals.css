@@ -105,7 +105,9 @@ footer h3 {
 }
 
 .logo-sqr {
-  background-image: url("./images/logo-sqr.png");
+  background-image: url("./images/odin-logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .float-right {

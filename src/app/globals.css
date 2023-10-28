@@ -138,7 +138,6 @@ button {
   color: #fff;
   border-radius: 10px;
   padding: 10px;
-  /*transform active:scale-75 transition-transform*/
 }
 
 button:hover {
@@ -184,11 +183,6 @@ button:hover {
 
 .three-column h4 {
   color: #83D9F1;
-}
-
-
-.heading-column {
-  display: flexbox;
 }
 
 /*External button styling used here*/

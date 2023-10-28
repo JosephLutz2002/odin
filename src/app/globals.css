@@ -110,6 +110,13 @@ footer h3 {
   background-position: center;
 }
 
+.heading-logo {
+  background-image: url('./images/dark-logo.png');
+  background-repeat: no-repeat;
+  height: 150px;
+  background-position: center;
+}
+
 .float-right {
   float: right;
 }
@@ -175,6 +182,10 @@ button:hover {
 
 .three-column h4 {
   color: #83D9F1;
+}
+
+.heading-column {
+  display: flexbox;
 }
 
 /*External button styling used here*/

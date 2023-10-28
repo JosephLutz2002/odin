@@ -8,7 +8,10 @@ import './globals.css'
 export default function Home() {
   return (
     <div>
-      <h1>Welcome to <span className='accent-word'>Odin</span></h1>
+      <div className='flex'>
+        <h1>Welcome to </h1>
+        <div className='w-48 h-48 m-8 heading-logo bg-contain'></div>
+      </div>
       <p>
         In the dynamic and demanding world of education, staying organized and on top of your academic progress is often a challenging task.
         To address this, we are excited to introduce our innovative web platform designed exclusively for students.

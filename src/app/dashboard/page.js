@@ -11,6 +11,7 @@ const MainComponent = () => {
   const [showForm, setShowForm] = useState(false);
   const [modules, setModules] = useState([]);
   const [modalForModelEdit, setModalForModelEdit] = useState(false)
+  const [modalForAddingModule,setModalForAddingModule] = useState(false)
   const [newModule, setNewModule] = useState({
     name: '',
     id: '',
@@ -22,7 +23,6 @@ const MainComponent = () => {
   const [selectedModule, setSelectedModule] = useState(null);
 
   const updateModuleMark = (moduleId, newMark) => {
-    // Find the module you want to update by its unique identifier (moduleId)
     const updatedModules = modules.map((module) => {
       if (module.id === moduleId) {
         return { ...module, mark: newMark };
@@ -54,10 +54,12 @@ const MainComponent = () => {
 
   const openForm = () => {
     setShowForm(true);
+    setModalForAddingModule(true)
   };
 
   const closeForm = () => {
     setShowForm(false);
+    setModalForAddingModule(false);
   };
 
   const addModule = (module) => {
@@ -85,6 +87,10 @@ const MainComponent = () => {
     setShowUseClient(true);
   };
 
+
+  const closeScreen = () =>{
+    setModalForAddingModule(true)
+  }
   return (
     <div>
       {!modalForModelEdit && (
@@ -98,6 +104,7 @@ const MainComponent = () => {
           onAddModule={addModule}
         />
       )}
+      {!modalForAddingModule && (
       <div>
         <h2>Modules</h2>
         <ul className="modules-list">
@@ -125,7 +132,7 @@ const MainComponent = () => {
             </li>
           ))}
         </ul>
-      </div>
+      </div>)}
       </div>
        )}
       {modalForModelEdit && showUseClient && (

@@ -59,6 +59,7 @@ function login(username,password) {
         const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json',
+          'Authorization': `Bearer ${cookies.getJWTToken('access')}`
         },
           data: {module:name,year:year,code:code,userid:cookies.getJWTToken('uid')},
         };
@@ -148,30 +149,32 @@ function login(username,password) {
     });
   }
 
-  function getAssignments(moduleid){
+  function getAssignments(moduleid) {
     return new Promise((resolve, reject) => {
-      const apiUrl = url+ `/api/modules/getAssignments?user_id=${cookies.getJWTToken('uid')}&module_id=${moduleid}`;
-      console.log(apiUrl)
+      const apiUrl = url + `/api/modules/getAssignments?module_id=${moduleid}`;
+      console.log(apiUrl);
       const requestOptions = {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json',
-        'Authorization': `Bearer ${cookies.getJWTToken('access')}`
-      },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${cookies.getJWTToken('access')}`
+        },
       };
-  
-      axios(apiUrl)
-      .then((response) => {
+      axios(apiUrl, requestOptions)
+        .then((response) => {
           resolve(response.data);
         })
         .catch((error) => {
-          resolve(false);
+          console.error("Error:", error);
+          reject(error); // Reject the promise with the error for better error handling.
         });
     });
   }
+  
 
   function getTests(moduleid){
     return new Promise((resolve, reject) => {
-      const apiUrl = url+ `/api/modules/getTests?user_id=${cookies.getJWTToken('uid')}&module_id=${moduleid}`;
+      const apiUrl = url+ `/api/modules/getTests?module_id=${moduleid}`;
       console.log(apiUrl)
       const requestOptions = {
         method: 'GET',
@@ -180,7 +183,7 @@ function login(username,password) {
       },
       };
   
-      axios(apiUrl)
+      axios(apiUrl,requestOptions)
       .then((response) => {
           resolve(response.data);
         })

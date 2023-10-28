@@ -15,7 +15,6 @@ function Login() {
    if (await api.login(username,password)){
     console.log('User access token\t',cookies.getJWTToken('access'))
     console.log('refresh token\t',cookies.getJWTToken('refresh'))
-    await api.getNewToken()
     router.push('/dashboard')
    }else {
     alert('Login Unsuccessful')

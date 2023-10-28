@@ -57,9 +57,10 @@ const Navbar = () => {
           <button className="bg-white text-blue-500 hover:bg-blue-100 text-sm px-4 py-2 rounded-full transition duration-300 ease-in-out" onClick={handleHomeButton}>
             Home
           </button>
+          {!isUserLoggedIn &&
           <button className="bg-white text-blue-500 hover:bg-blue-100 text-sm px-4 py-2 rounded-full transition duration-300 ease-in-out" onClick={handleLoginButton}>
             Sign In
-          </button>
+          </button>}
           <button className="bg-white text-blue-500 hover-bg-blue-100 text-sm px-4 py-2 rounded-full transition duration-300 ease-in-out">Other Projects</button>
         </div>
 

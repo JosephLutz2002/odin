@@ -1,5 +1,8 @@
 import React from 'react';
 import CustomTable from './moduleTable';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
 const CustomMenu = ({ module, onClose , updateModuleMark}) => {
     
 
@@ -17,14 +20,11 @@ const CustomMenu = ({ module, onClose , updateModuleMark}) => {
           <p>
             <strong>Code:</strong> {module.code}
           </p>
-          <p>
-            <strong>Mark:</strong> {module.mark}
-          </p>
         </div>
         
       )}
       <CustomTable module={module} updateModuleMark={updateModuleMark}></CustomTable>
-      <button onClick={onClose}>Close</button>
+      <button onClick={onClose}><FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon></button>
     </div>
   );
 };

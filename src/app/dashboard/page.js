@@ -4,11 +4,13 @@ import AddModuleForm from '../components/addModule';
 import api from '../utils/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import CustomMenu from '../components/ModuleMenu';
 import Navbar from '../components/navbar';
 const MainComponent = () => {
   const [showForm, setShowForm] = useState(false);
   const [modules, setModules] = useState([]);
+  const [modalForModelEdit, setModalForModelEdit] = useState(false)
   const [newModule, setNewModule] = useState({
     name: '',
     id: '',
@@ -79,13 +81,16 @@ const MainComponent = () => {
 
   const handleUseClientClick = (module) => {
     setSelectedModule(module);
+    setModalForModelEdit(true)
     setShowUseClient(true);
   };
 
   return (
     <div>
-      <button onClick={openForm}>Create New Module</button>
-      {showForm && (
+      {!modalForModelEdit && (
+      <div>
+      <button onClick={openForm}><FontAwesomeIcon icon={faPlus} /></button>
+      { showForm && (
         <AddModuleForm
           newModule={newModule}
           setNewModule={setNewModule}
@@ -121,11 +126,13 @@ const MainComponent = () => {
           ))}
         </ul>
       </div>
-      {showUseClient && (
+      </div>
+       )}
+      {modalForModelEdit && showUseClient && (
         <CustomMenu
           module={selectedModule}
           updateModuleMark={updateModuleMark}
-          onClose={() => setShowUseClient(false)}
+          onClose={() => {setShowUseClient(false); setModalForModelEdit(false)}}
         />
       )}
     </div>

@@ -1,14 +1,16 @@
 'use client'
 const axios = require('axios')
 const url = 'http://127.0.0.1:5000'
-const cookies = require('./cookies')
+const cookies = require('./cookies');
 function login(username,password) {
     console.log('saving new note');
       return new Promise((resolve, reject) => {
         const apiUrl = url+ '/api/account/login';
         const requestOptions = {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json'},
+          headers: { 'Content-Type': 'application/json',
+          'Authorization': `Bearer ${cookies.getJWTToken('access')}`
+        },
           data: {username:username,password:password},
         };
     
@@ -32,7 +34,9 @@ function login(username,password) {
         const apiUrl = url+ '/api/account/createUser';
         const requestOptions = {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json'},
+          headers: { 'Content-Type': 'application/json',
+          'Authorization': `Bearer ${cookies.getJWTToken('access')}`
+        },
           data: {username:username,password:password,email:email},
         };
     
@@ -54,7 +58,8 @@ function login(username,password) {
         const apiUrl = url+ '/api/modules/addModule';
         const requestOptions = {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json'},
+          headers: { 'Content-Type': 'application/json',
+        },
           data: {module:name,year:year,code:code,userid:cookies.getJWTToken('uid')},
         };
     
@@ -72,13 +77,15 @@ function login(username,password) {
   function getAllModules(){
     console.log('saving new note');
       return new Promise((resolve, reject) => {
-        const apiUrl = url+ '/api/modules/getModules';
+        const apiUrl = url+ `/api/modules/getModules`;
         const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json'},
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json',
+          'Authorization': `Bearer ${cookies.getJWTToken('access')}`
+        },
         };
     
-        axios(apiUrl, {params:{id:cookies.getJWTToken('uid')}})
+        axios(apiUrl,requestOptions)
           .then((response) => {  
             resolve(response.data);
           })
@@ -94,7 +101,9 @@ function login(username,password) {
       const apiUrl = url+ '/api/modules/deleteModule';
       const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': `Bearer ${cookies.getJWTToken('access')}`
+      },
         data: {
           userid:cookies.getJWTToken('uid'),
           moduleid: moduleid
@@ -116,7 +125,9 @@ function login(username,password) {
       const apiUrl = url+ '/api/modules/addAssignment';
       const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': `Bearer ${cookies.getJWTToken('access')}`
+      },
         data: {
           name:name,
           desc:desc,
@@ -143,7 +154,9 @@ function login(username,password) {
       console.log(apiUrl)
       const requestOptions = {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': `Bearer ${cookies.getJWTToken('access')}`
+      },
       };
   
       axios(apiUrl)
@@ -162,7 +175,9 @@ function login(username,password) {
       console.log(apiUrl)
       const requestOptions = {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': `Bearer ${cookies.getJWTToken('access')}`
+      },
       };
   
       axios(apiUrl)
@@ -181,7 +196,9 @@ function login(username,password) {
       const apiUrl = url+ '/api/modules/addTest';
       const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': `Bearer ${cookies.getJWTToken('access')}`
+      },
         data: {
           name:name,
           date:date,
@@ -207,7 +224,9 @@ function login(username,password) {
       console.log(apiUrl)
       const requestOptions = {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': `Bearer ${cookies.getJWTToken('access')}`
+      },
       };
   
       axios(apiUrl)
@@ -225,7 +244,9 @@ function login(username,password) {
       const apiUrl = url+ '/api/modules/updateAssignment';
       const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': `Bearer ${cookies.getJWTToken('access')}`
+      },
         data: {
           name:name,
           assignid:assignid,
@@ -250,7 +271,9 @@ function login(username,password) {
       const apiUrl = url+ '/api/modules/updateTest';
       const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': `Bearer ${cookies.getJWTToken('access')}`
+      },
         data: {
           name:name,
           testid:testid,
@@ -275,7 +298,9 @@ function login(username,password) {
       const apiUrl = url+ '/api/modules/deleteAssignment';
       const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': `Bearer ${cookies.getJWTToken('access')}`
+      },
         data: {
           assignid:assignid,
           moduleid:moduleid,
@@ -298,7 +323,9 @@ function login(username,password) {
       const apiUrl = url+ '/api/modules/deleteTest';
       const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': `Bearer ${cookies.getJWTToken('access')}`
+      },
         data: {
           testid:testid,
           moduleid:moduleid,
@@ -308,6 +335,82 @@ function login(username,password) {
   
       axios(apiUrl, requestOptions)
       .then((response) => {  
+          resolve(response.data);
+        })
+        .catch((error) => {
+          resolve(false);
+        });
+    });
+  }
+
+
+  function getProfileImage(){
+    return new Promise((resolve, reject) => {
+      const apiUrl = url + '/download'; // Replace with the correct URL
+      const requestOptions = {
+        method: 'GET',
+        responseType: 'blob',
+        headers: {
+          'Authorization': `Bearer ${cookies.getJWTToken('access')}`,
+        },
+      };
+    
+      axios(apiUrl, requestOptions)
+        .then((response) => {
+          const imgUrl = URL.createObjectURL(new Blob([response.data]));
+          resolve(imgUrl);
+        })
+        .catch((error) => {
+          console.error('Failed to fetch profile image:', error);
+          resolve(null);
+        });
+    });
+    
+  }
+
+  function uploadFile(file) {
+    const formData = new FormData();
+    formData.append('file', file);
+  
+    fetch('http://127.0.0.1:5000/upload', {
+      method: 'POST',
+      headers:{
+        'Content-Type':'multipart/form-data'
+      },
+      body: formData,
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('File upload failed');
+        }
+      })
+      .then(data => {
+        console.log(data); // Handle the API response here
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
+
+  function getNewToken(){
+    return new Promise((resolve, reject) => {
+      const apiUrl = url+ '/refresh';
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json',
+        'Authorization': `Bearer ${cookies.getJWTToken('refresh')}`
+      },
+        
+      };
+  
+      axios(apiUrl, requestOptions)
+      .then((response) => {  
+          console.log(response.data)
+          cookies.addToken('access',response.data['access_token'])
+
           resolve(response.data);
         })
         .catch((error) => {
@@ -330,6 +433,9 @@ module.exports = {
     updateAssignment,
     updateTest,
     deleteAssignment,
-    deleteTest
+    deleteTest,
+    getProfileImage,
+    uploadFile,
+    getNewToken
 };
   

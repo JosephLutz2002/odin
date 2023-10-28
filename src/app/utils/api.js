@@ -410,7 +410,6 @@ function login(username,password) {
       .then((response) => {  
           console.log(response.data)
           cookies.addToken('access',response.data['access_token'])
-
           resolve(response.data);
         })
         .catch((error) => {

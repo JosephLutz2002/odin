@@ -139,8 +139,6 @@ button {
   border-radius: 10px;
   padding: 10px;
   /*transform active:scale-75 transition-transform*/
-  transform: scale(.75);
-  transition-property: transform;
 }
 
 button:hover {
@@ -180,9 +178,14 @@ button:hover {
   color: white;
 }
 
+.three-column>div:hover {
+  background-color: #0A1128;
+}
+
 .three-column h4 {
   color: #83D9F1;
 }
+
 
 .heading-column {
   display: flexbox;
@@ -270,7 +273,8 @@ button:hover {
 
 .modules-list {
   display: flex;
-  flex-wrap: wrap; /* Wrap to the next line when there's not enough space */
+  flex-wrap: wrap;
+  /* Wrap to the next line when there's not enough space */
   list-style: none;
   padding: 0;
 }
@@ -279,7 +283,8 @@ button:hover {
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px;
-  width: 200px; /* Adjust the width as needed */
+  width: 200px;
+  /* Adjust the width as needed */
   display: flex;
   flex-direction: column;
 }
@@ -296,19 +301,24 @@ table {
 
 
 
-th, td {
+th,
+td {
   text-align: center;
   padding: 10px;
 }
 
 tbody tr:nth-child(even) {
-  background-color: #f2f2f2; /* Optional: Add alternating row colors */
+  background-color: #f2f2f2;
+  /* Optional: Add alternating row colors */
 }
 
 textarea {
-  width: 100px; /* Set the width to a fixed size */
-  height: 100px; /* Set the height to a fixed size */
-  resize: none; /* Prevent resizing by the user */
+  width: 100px;
+  /* Set the width to a fixed size */
+  height: 100px;
+  /* Set the height to a fixed size */
+  resize: none;
+  /* Prevent resizing by the user */
 }
 
 /* Add this CSS in your stylesheet or component */
@@ -317,16 +327,20 @@ textarea {
 }
 
 .profile-image-container {
-  width: 100px; /* Adjust the width and height as needed */
-  height: 100px; /* Adjust the width and height as needed */
+  width: 100px;
+  /* Adjust the width and height as needed */
+  height: 100px;
+  /* Adjust the width and height as needed */
   border-radius: 50%;
   overflow: hidden;
   position: relative;
 }
 
 .default-profile-image {
-  width: 100px; /* Adjust the width and height as needed */
-  height: 100px; /* Adjust the width and height as needed */
+  width: 100px;
+  /* Adjust the width and height as needed */
+  height: 100px;
+  /* Adjust the width and height as needed */
   border-radius: 50%;
   overflow: hidden;
   position: relative;
@@ -360,8 +374,3 @@ textarea {
   opacity: 0;
   cursor: pointer;
 }
-
-
-
-
-

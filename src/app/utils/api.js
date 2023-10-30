@@ -156,8 +156,7 @@ function addAssignment(name, desc, date, moduleid, weighting) {
 
   function getAssignments(moduleid){
     return new Promise((resolve, reject) => {
-      const apiUrl = url+ `/api/modules/getAssignments?user_id=${cookies.getJWTToken('uid')}&module_id=${moduleid}`;
-      console.log(apiUrl)
+      const apiUrl = url+ `/api/modules/getAssignments?module_id=${moduleid}`;
       const requestOptions = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json',
@@ -165,7 +164,7 @@ function addAssignment(name, desc, date, moduleid, weighting) {
       },
       };
   
-      axios(apiUrl)
+      axios(apiUrl,requestOptions)
       .then((response) => {
           resolve(response.data);
         })
@@ -186,7 +185,7 @@ function addAssignment(name, desc, date, moduleid, weighting) {
       },
       };
   
-      axios(apiUrl)
+      axios(apiUrl,requestOptions)
       .then((response) => {
         resolve(response.data);
       })

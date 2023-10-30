@@ -101,7 +101,6 @@ const MainComponent = () => {
       {!modalForModelEdit && (
       <div>
       <button onClick={openForm}><FontAwesomeIcon icon={faPlus} /></button>
-      <Piechart></Piechart>
       { showForm && (
         <AddModuleForm
           newModule={newModule}

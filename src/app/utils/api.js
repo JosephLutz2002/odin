@@ -54,30 +54,28 @@ function createAccount(username, password, email) {
 }
 
 
-function createModule(name, year, code) {
-  console.log('saving new note');
-  return new Promise((resolve, reject) => {
-    const apiUrl = url + '/api/modules/addModule';
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${cookies.getJWTToken('access')}`
-
-      },
-      data: { module: name, year: year, code: code, userid: cookies.getJWTToken('uid') },
-    };
-
-    axios(apiUrl, requestOptions)
-      .then((response) => {
-        console.log(response.data)
-        resolve(response.data);
-      })
-      .catch((error) => {
-        resolve(false);
+  function createModule(name,year,code) {
+    console.log('saving new note');
+      return new Promise((resolve, reject) => {
+        const apiUrl = url+ '/api/modules/addModule';
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json',
+          'Authorization': `Bearer ${cookies.getJWTToken('access')}`
+        },
+          data: {module:name,year:year,code:code,userid:cookies.getJWTToken('uid')},
+        };
+    
+        axios(apiUrl, requestOptions)
+          .then((response) => {  
+            console.log(response.data)
+            resolve(response.data);
+          })
+          .catch((error) => {
+            resolve(false);
+          });
       });
-  });
-}
+  }
 
 function getAllModules() {
   console.log('saving new note');
@@ -156,41 +154,39 @@ function addAssignment(name, desc, date, moduleid, weighting) {
   });
 }
 
-function getAssignments(moduleid) {
-  return new Promise((resolve, reject) => {
-    const apiUrl = url + `/api/modules/getAssignments?user_id=${cookies.getJWTToken('uid')}&module_id=${moduleid}`;
-    console.log(apiUrl)
-    const requestOptions = {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
+  function getAssignments(moduleid){
+    return new Promise((resolve, reject) => {
+      const apiUrl = url+ `/api/modules/getAssignments?user_id=${cookies.getJWTToken('uid')}&module_id=${moduleid}`;
+      console.log(apiUrl)
+      const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
         'Authorization': `Bearer ${cookies.getJWTToken('access')}`
       },
-    };
-
-    axios(apiUrl)
+      };
+  
+      axios(apiUrl)
       .then((response) => {
-        resolve(response.data);
-      })
-      .catch((error) => {
-        resolve(false);
-      });
-  });
-}
+          resolve(response.data);
+        })
+        .catch((error) => {
+          resolve(false);
+        });
+    });
+  }
 
-function getTests(moduleid) {
-  return new Promise((resolve, reject) => {
-    const apiUrl = url + `/api/modules/getTests?user_id=${cookies.getJWTToken('uid')}&module_id=${moduleid}`;
-    console.log(apiUrl)
-    const requestOptions = {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
+  function getTests(moduleid){
+    return new Promise((resolve, reject) => {
+      const apiUrl = url+ `/api/modules/getTests?module_id=${moduleid}`;
+      console.log(apiUrl)
+      const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json',
         'Authorization': `Bearer ${cookies.getJWTToken('access')}`
       },
-    };
-
-    axios(apiUrl)
+      };
+  
+      axios(apiUrl)
       .then((response) => {
         resolve(response.data);
       })
@@ -420,21 +416,21 @@ function getNewToken() {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${cookies.getJWTToken('refresh')}`
       },
+        
+      };
+  
+      axios(apiUrl, requestOptions)
+      .then((response) => {  
+          console.log(response.data)
+          cookies.addToken('access',response.data['access_token'])
 
-    };
-
-    axios(apiUrl, requestOptions)
-      .then((response) => {
-        console.log(response.data)
-        cookies.addToken('access', response.data['access_token'])
-
-        resolve(response.data);
-      })
-      .catch((error) => {
-        resolve(false);
-      });
-  });
-}
+          resolve(response.data);
+        })
+        .catch((error) => {
+          resolve(false);
+        });
+    });
+  }
 
 module.exports = {
   login,

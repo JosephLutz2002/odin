@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 const api = require('../utils/api')
+import '../globals.css'
 const AddModuleForm = ({ onClose, onAddModule }) => {
   const [moduleName, setModuleName] = useState('');
   const [moduleID, setModuleID] = useState('');
@@ -39,8 +40,8 @@ const AddModuleForm = ({ onClose, onAddModule }) => {
         Year:
         <input type="text" value={year} onChange={(e) => setYear(e.target.value)} />
       </label>
-      <button onClick={handleSubmit}>Add Module</button>
-      <button onClick={onClose}>Close</button>
+      <button onClick={handleSubmit} className='mr-2 ml-2'>Add Module</button>
+      <button onClick={onClose}  className='mr-2 ml-2'>Close</button>
     </div>
   );
 };

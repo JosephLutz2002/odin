@@ -5,7 +5,7 @@ import api from '../utils/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import CustomMenu from '../components/ModuleMenu';
-
+import Navbar from '../components/navbar';
 const MainComponent = () => {
   const [showForm, setShowForm] = useState(false);
   const [modules, setModules] = useState([]);

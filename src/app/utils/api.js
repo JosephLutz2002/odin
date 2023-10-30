@@ -431,6 +431,29 @@ function getNewToken() {
     });
   }
 
+
+  function getModuleInfo(moduleid){
+    return new Promise((resolve, reject) => {
+      const apiUrl = url + `/getM?moduleid=${moduleid}`;
+      const requestOptions = {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${cookies.getJWTToken('access')}`
+        },
+          
+        };
+    
+        axios(apiUrl, requestOptions)
+        .then((response) => {  
+            resolve(response.data);
+          })
+          .catch((error) => {
+            resolve(false);
+          });
+      });
+  }
+
 module.exports = {
   login,
   createAccount,
@@ -448,5 +471,5 @@ module.exports = {
   deleteTest,
   getProfileImage,
   uploadFile,
-  getNewToken
+  getNewToken,getModuleInfo
 };

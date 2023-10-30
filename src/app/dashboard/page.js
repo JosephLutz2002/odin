@@ -7,6 +7,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import CustomMenu from '../components/ModuleMenu';
 import Navbar from '../components/navbar';
+import Piechart from '../components/piechart';
 const MainComponent = () => {
   const [showForm, setShowForm] = useState(false);
   const [modules, setModules] = useState([]);
@@ -21,7 +22,11 @@ const MainComponent = () => {
   });
   const [showUseClient, setShowUseClient] = useState(false);
   const [selectedModule, setSelectedModule] = useState(null);
-
+  const data = [
+    { label: 'Content A', value: 30 },
+    { label: 'Content B', value: 20 },
+    { label: 'Content C', value: 50 },
+  ];
   const updateModuleMark = (moduleId, newMark) => {
     const updatedModules = modules.map((module) => {
       if (module.id === moduleId) {
@@ -96,6 +101,7 @@ const MainComponent = () => {
       {!modalForModelEdit && (
       <div>
       <button onClick={openForm}><FontAwesomeIcon icon={faPlus} /></button>
+      <Piechart></Piechart>
       { showForm && (
         <AddModuleForm
           newModule={newModule}

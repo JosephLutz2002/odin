@@ -3,7 +3,7 @@ import CustomDropdown from './DropDownMenu';
 const api = require('../utils/api')
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-const CustomTable = ({ module ,updateModuleMark}) => {
+const CustomTable = ({ module ,updateModuleMark, fetchModuleInfo}) => {
   const [data, setData] = useState([]);
   const [newRow, setNewRow] = useState({
     assessmentName: '',
@@ -95,6 +95,7 @@ useEffect(() => {
     setWeight('')
     setOptionSelected('')
     setAssesmentDesc('')
+    fetchModuleInfo()
   };
 
   const deleteRow = async (index) => {

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import CustomDropdown from './DropDownMenu';
 const api = require('../utils/api')
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 const CustomTable = ({ module ,updateModuleMark}) => {
   const [data, setData] = useState([]);
   const [newRow, setNewRow] = useState({
@@ -23,7 +25,9 @@ const CustomTable = ({ module ,updateModuleMark}) => {
     {value:'2',label:'Test'}
 ]
 const [optionSelected, setOptionSelected] = useState(null);
-
+const handleDateChange = (date) => {
+  setAssesmentDate(date);
+};
 useEffect(() => {
   const fetchAssignments = async () => {
     try {
@@ -121,6 +125,7 @@ useEffect(() => {
   };
 
   const handleSaveClick = async (index) => {
+    console.log(assessmentDate)
     if (data[index].assessmentType === 'Assignment'){
       const response =  await api.updateAssignment(data[index].assessmentName,data[index].id,module.id,editedMark)
       updateModuleMark(module.id,response.mark)
@@ -226,14 +231,14 @@ useEffect(() => {
             setAssesmentName(e.target.value)
           }
         />
-        <input
-          type="text"
-          value={assessmentDate}
-          placeholder="Assessment Date"
-          onChange={(e) =>
-            setAssesmentDate(e.target.value)
-          }
-        />
+        <div>
+      <DatePicker
+        selected={assessmentDate}
+        onChange={handleDateChange}
+        dateFormat="dd/MM/yyyy" // You can customize the date format
+        isClearable // Adds a clear button
+      />
+    </div>
         <input
           type="text"
           value={mark}

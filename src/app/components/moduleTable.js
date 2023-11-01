@@ -108,6 +108,7 @@ useEffect(() => {
       updateModuleMark(module.id,response.mark);
     }
     fetchData();
+    fetchModuleInfo();
   };
 
   const handleSaveMark = async (index) =>{

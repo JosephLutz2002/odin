@@ -147,6 +147,10 @@ button:hover {
   border-width: 1px;
 }
 
+.sliderButton {
+  color: #034078;
+}
+
 /*Column Styling */
 .two-column {
   display: grid;

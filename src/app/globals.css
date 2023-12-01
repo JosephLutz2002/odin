@@ -82,6 +82,15 @@ footer h3 {
   color: #83D9F1;
 }
 
+li {
+  border-radius: 15px;
+}
+
+li div {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 .accent-word {
   color: #1282A2;
 }
@@ -145,6 +154,10 @@ button:hover {
   color: #fff;
   border-style: solid;
   border-width: 1px;
+}
+
+.dash-button {
+  margin: 10px;
 }
 
 .sliderButton {

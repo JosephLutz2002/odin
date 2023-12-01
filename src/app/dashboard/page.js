@@ -12,7 +12,7 @@ const MainComponent = () => {
   const [showForm, setShowForm] = useState(false);
   const [modules, setModules] = useState([]);
   const [modalForModelEdit, setModalForModelEdit] = useState(false)
-  const [modalForAddingModule,setModalForAddingModule] = useState(false)
+  const [modalForAddingModule, setModalForAddingModule] = useState(false)
   const [newModule, setNewModule] = useState({
     name: '',
     id: '',
@@ -93,58 +93,58 @@ const MainComponent = () => {
   };
 
 
-  const closeScreen = () =>{
+  const closeScreen = () => {
     setModalForAddingModule(true)
   }
   return (
     <div>
       {!modalForModelEdit && (
-      <div>
-      <button onClick={openForm}><FontAwesomeIcon icon={faPlus} /></button>
-      { showForm && (
-        <AddModuleForm
-          newModule={newModule}
-          setNewModule={setNewModule}
-          onClose={closeForm}
-          onAddModule={addModule}
-        />
+        <div>
+          <button className='dash-button' onClick={openForm}><FontAwesomeIcon icon={faPlus} /> Add a Module</button>
+          {showForm && (
+            <AddModuleForm
+              newModule={newModule}
+              setNewModule={setNewModule}
+              onClose={closeForm}
+              onAddModule={addModule}
+            />
+          )}
+          {!modalForAddingModule && (
+            <div>
+              <h2>Modules</h2>
+              <ul className="modules-list">
+                {modules.map((module, index) => (
+                  <li
+                    key={module.id}
+                    className="module-item"
+                    onClick={() => handleUseClientClick(module)}
+                  >
+                    <div>
+                      <strong>Name:</strong> {module.name}
+                    </div>
+                    <div>
+                      <strong>Year:</strong> {module.year}
+                    </div>
+                    <div>
+                      <strong>Code:</strong> {module.code}
+                    </div>
+                    <div>
+                      <strong>Mark :</strong> {module.mark}
+                    </div>
+                    <button onClick={() => handleDeleteModule(index)}>
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>)}
+        </div>
       )}
-      {!modalForAddingModule && (
-      <div>
-        <h2>Modules</h2>
-        <ul className="modules-list">
-          {modules.map((module, index) => (
-            <li
-              key={module.id}
-              className="module-item"
-              onClick={() => handleUseClientClick(module)}
-            >
-              <div>
-                <strong>Name:</strong> {module.name}
-              </div>
-              <div>
-                <strong>Year:</strong> {module.year}
-              </div>
-              <div>
-                <strong>Code:</strong> {module.code}
-              </div>
-              <div>
-                <strong>Mark :</strong> {module.mark}
-              </div>
-              <button onClick={() => handleDeleteModule(index)}>
-                <FontAwesomeIcon icon={faTrash} />
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>)}
-      </div>
-       )}
       {modalForModelEdit && showUseClient && (
         <CustomMenu
           module={selectedModule}
           updateModuleMark={updateModuleMark}
-          onClose={() => {setShowUseClient(false); setModalForModelEdit(false)}}
+          onClose={() => { setShowUseClient(false); setModalForModelEdit(false) }}
         />
       )}
     </div>

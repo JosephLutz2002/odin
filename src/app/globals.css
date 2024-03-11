@@ -202,6 +202,35 @@ button:hover {
   color: #83D9F1;
 }
 
+.row-container::-webkit-scrollbar {
+  display: none;
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.btn button {
+  color: white;
+  background-color: #001F54;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border: none;
+  height: 4rem;
+  width: 4rem;
+  cursor: pointer;
+  transition: all 0.1s ease-in;
+}
+
+.btn {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.btn button:hover {
+  background-color: black;
+}
+
 /*External button styling used here*/
 .glow-on-hover {
   @apply w-full h-[50px] text-white cursor-pointer relative z-0 overflow-hidden rounded-[10px] border-[black];

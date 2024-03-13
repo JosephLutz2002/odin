@@ -39,12 +39,14 @@ const Slider = () => {
                 </div>
                 <div className="row-container" id="image-slider">
                     {filteredItems.map((item) => (
-                        <div key={item.id} className="row-item">
-                            <Link href={`/`}>
-                                <div>
-                                    <img src={item.img} alt="odin interface screenshot" />
-                                </div>
-                            </Link>
+                        <div key={item.description} className="row-item">
+                            <div key={item.id} className="row-item">
+                                <Link href={`/`}>
+                                    <div>
+                                        <img src={item.img} alt="odin interface screenshot" />
+                                    </div>
+                                </Link>
+                            </div>
                         </div>
                     ))}
                 </div>
